@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="walkervalentinus"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-10-19 08:36:44 PM"/>
+        <attribute name="created" value="d2Fsa2VydmFsZW50aW51cztMQVBUT1AtMEFQVFE4N0Q7MjAyMS0wOS0xNTswNDo0NToyMCBQTTs0MDY4"/>
+        <attribute name="edited" value="d2Fsa2VydmFsZW50aW51cztMQVBUT1AtMEFQVFE4N0Q7MjAyMS0wOS0xNTswNToyOTowOCBQTTsxNzs0MjQw"/>
+        <attribute name="edited" value="TGVub3ZvO0RFU0tUT1AtOUxLQUJUMTsyMDIyLTEwLTE5OzA4OjM2OjQ0IFBNOzc7MzA4Mg=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="isbn, judul, penulis, tahunterbit, penerbit, formatbukuelektronik" type="String" array="False" size=""/>
+            <declare name="hargapembelian, minimummargin, rating" type="Real" array="False" size=""/>
+            <declare name="stok" type="Integer" array="False" size=""/>
+            <input variable="isbn"/>
+            <input variable="judul"/>
+            <input variable="penulis"/>
+            <input variable="tahunterbit"/>
+            <input variable="penerbit"/>
+            <input variable="formatbukuelektronik"/>
+            <input variable="hargapembelian"/>
+            <input variable="minimummargin"/>
+            <input variable="stok"/>
+            <input variable="rating"/>
+            <output expression="isbn &amp; &quot;|&quot; &amp;judul &amp; &quot;|&quot; &amp;Penulis &amp; &quot;|&quot; &amp;tahunterbit &amp; &quot;|&quot; &amp;penerbit &amp; &quot;|&quot; &amp;formatbukuelektronik &amp; &quot;|&quot; &amp;hargapembelian &amp; &quot;|&quot; &amp;minimummargin &amp; &quot;|&quot; &amp;stok &amp; &quot;|&quot; &amp;rating" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
