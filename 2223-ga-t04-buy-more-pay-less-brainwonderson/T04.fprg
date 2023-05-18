@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="MSS"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-10-28 08:11:47 AM"/>
+        <attribute name="created" value="TVNTO0RFU0tUT1AtNjc1R0w5STsyMDIxLTA5LTE0OzA5OjMyOjMxIFBNOzI1NDY="/>
+        <attribute name="edited" value="TVNTO0RFU0tUT1AtNjc1R0w5STsyMDIxLTEwLTA1OzA0OjIxOjU4IFBNOzE7TVNTO0RFU0tUT1AtNjc1R0w5STsyMDIxLTA5LTE0OzA5OjMyOjMxIFBNO1EwMS5mcHJnOzU5Njc="/>
+        <attribute name="edited" value="TVNTO0RFU0tUT1AtNjc1R0w5STsyMDIxLTEwLTIyOzA3OjAzOjEzIFBNOzY0OzI2OTg="/>
+        <attribute name="edited" value="VFVGIEdBTUlORyAxNTtMQVBUT1AtU1JOS0RHSE87MjAyMi0xMC0yNzswNTozOTo1OCBQTTs2OzMzNjA="/>
+        <attribute name="edited" value="TGVub3ZvO0RFU0tUT1AtOUxLQUJUMTsyMDIyLTEwLTI4OzA4OjExOjQ3IEFNOzE0OzMxMDk="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="nrElement" type="Integer" array="False" size=""/>
+            <assign variable="nrElement" expression="3"/>
+            <declare name="arrIsbn" type="String" array="True" size="3"/>
+            <declare name="arrPrice" type="Real" array="True" size="3"/>
+            <declare name="arrQuantity" type="Integer" array="True" size="3"/>
+            <declare name="c" type="Integer" array="False" size=""/>
+            <for variable="c" start="0" end="nrElement - 1" direction="inc" step="1">
+                <assign variable="arrIsbn[c]" expression="&quot;&quot;"/>
+                <assign variable="arrPrice[c]" expression="0.0"/>
+                <assign variable="arrQuantity[c]" expression="0"/>
+            </for>
+            <declare name="total" type="Real" array="False" size=""/>
+            <declare name="continue" type="Boolean" array="False" size=""/>
+            <assign variable="total" expression="0"/>
+            <assign variable="continue" expression="true"/>
+            <while expression="continue=true">
+                <declare name="isbn" type="String" array="False" size=""/>
+                <declare name="price" type="Real" array="False" size=""/>
+                <declare name="quantity" type="Integer" array="False" size=""/>
+                <input variable="isbn"/>
+                <if expression="isbn == &quot;---&quot;">
+                    <then>
+                        <assign variable="continue" expression="false"/>
+                    </then>
+                    <else>
+                        <input variable="price"/>
+                        <input variable="quantity"/>
+                        <declare name="exist" type="Boolean" array="False" size=""/>
+                        <assign variable="exist" expression="false"/>
+                        <assign variable="c" expression="0"/>
+                        <do expression="!exist &amp;&amp; c &lt; nrElement">
+                            <comment text=""/>
+                            <if expression="arrIsbn[c] == isbn">
+                                <then>
+                                    <assign variable="arrQuantity[c]" expression="arrQuantity[c] + quantity"/>
+                                    <assign variable="exist" expression="true"/>
+                                </then>
+                                <else>
+                                    <assign variable="c" expression="c + 1"/>
+                                </else>
+                            </if>
+                        </do>
+                        <if expression="!exist">
+                            <then>
+                                <declare name="indexFound" type="Boolean" array="False" size=""/>
+                                <assign variable="indexFound" expression="false"/>
+                                <declare name="index" type="Integer" array="False" size=""/>
+                                <assign variable="index" expression="0"/>
+                                <do expression="!indexFound &amp;&amp; (index &lt; nrElement)">
+                                    <if expression="arrQuantity[index] == 0">
+                                        <then>
+                                            <assign variable="indexFound" expression="true"/>
+                                        </then>
+                                        <else>
+                                            <assign variable="index" expression="index + 1"/>
+                                        </else>
+                                    </if>
+                                </do>
+                                <assign variable="arrIsbn[index]" expression="isbn"/>
+                                <assign variable="arrPrice[index]" expression="price"/>
+                                <assign variable="arrQuantity[index]" expression="quantity"/>
+                                <assign variable="index" expression="index + 1"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </else>
+                </if>
+            </while>
+            <for variable="c" start="0" end="nrElement - 1" direction="inc" step="1">
+                <declare name="pprice" type="Real" array="False" size=""/>
+                <assign variable="pprice" expression="arrPrice[c]"/>
+                <if expression="arrQuantity[c] &gt;= 20">
+                    <then>
+                        <assign variable="pprice" expression="arrPrice[c] - ( 12/100 *arrPrice[c])"/>
+                    </then>
+                    <else>
+                        <if expression="arrQuantity[c] &gt;= 10">
+                            <then>
+                                <assign variable="pprice" expression="arrPrice[c] - (5/100 *arrPrice[c])"/>
+                            </then>
+                            <else>
+                                <if expression="arrQuantity[c] &gt;= 5">
+                                    <then>
+                                        <assign variable="pprice" expression="arrPrice[c] - (2/100 *arrPrice[c])"/>
+                                    </then>
+                                    <else/>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+                <assign variable="total" expression="total + (pprice * arrQuantity[c])"/>
+            </for>
+            <output expression="toFixed(total, 2)" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
