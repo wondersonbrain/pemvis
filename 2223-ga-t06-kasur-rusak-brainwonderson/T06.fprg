@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Lenovo"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-12-01 04:01:06 PM"/>
+        <attribute name="created" value="TGVub3ZvO0RFU0tUT1AtOUxLQUJUMTsyMDIyLTEyLTAxOzAxOjUwOjQzIFBNOzI5NDk="/>
+        <attribute name="edited" value="TGVub3ZvO0RFU0tUT1AtOUxLQUJUMTsyMDIyLTEyLTAxOzA0OjAxOjA2IFBNOzM7MzA1Nw=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="i, k, tot" type="Integer" array="False" size=""/>
+            <declare name="sentence" type="String" array="False" size=""/>
+            <input variable="sentence"/>
+            <assign variable="tot" expression="len(sentence)"/>
+            <declare name="data" type="String" array="True" size="tot"/>
+            <call expression="sentence(tot,sentence,data)"/>
+            <assign variable="k" expression="0"/>
+            <assign variable="i" expression="tot-1"/>
+            <declare name="answer" type="Boolean" array="False" size=""/>
+            <assign variable="answer" expression="true"/>
+            <while expression="tot&gt;=1&amp;&amp;answer=true">
+                <if expression="data[k]==data[i]">
+                    <then>
+                        <assign variable="answer" expression="true"/>
+                        <assign variable="i" expression="i-1"/>
+                        <assign variable="k" expression="k+1"/>
+                        <assign variable="tot" expression="tot-2"/>
+                    </then>
+                    <else>
+                        <assign variable="answer" expression="false"/>
+                    </else>
+                </if>
+            </while>
+            <if expression="answer">
+                <then>
+                    <call expression="answer2"/>
+                </then>
+                <else>
+                    <call expression="answer1"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="answer1" type="None" variable="">
+        <parameters/>
+        <body>
+            <output expression="&quot;NO&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="answer2" type="None" variable="">
+        <parameters/>
+        <body>
+            <output expression="&quot;YES&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="sentence" type="None" variable="">
+        <parameters>
+            <parameter name="tot" type="Integer" array="False"/>
+            <parameter name="sentence" type="String" array="False"/>
+            <parameter name="data" type="String" array="True"/>
+        </parameters>
+        <body>
+            <declare name="i, k" type="Integer" array="False" size=""/>
+            <assign variable="tot" expression="len(sentence)"/>
+            <for variable="i" start="0" end="tot-1" direction="inc" step="1">
+                <assign variable="data[i]" expression="char(sentence,i)"/>
+            </for>
+        </body>
+    </function>
+</flowgorithm>
