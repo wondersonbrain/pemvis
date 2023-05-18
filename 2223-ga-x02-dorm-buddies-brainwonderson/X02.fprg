@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="Personal"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2022-12-12 03:18:25 PM"/>
+        <attribute name="created" value="UGVyc29uYWw7REVTS1RPUC1PVlAwOFZNOzIwMjItMTItMTI7MTA6NDY6MTUgQU07MzE4OQ=="/>
+        <attribute name="edited" value="UGVyc29uYWw7REVTS1RPUC1PVlAwOFZNOzIwMjItMTItMTI7MTE6NDQ6NTUgQU07MTszMzAw"/>
+        <attribute name="edited" value="TGVub3ZvO0RFU0tUT1AtOUxLQUJUMTsyMDIyLTEyLTEyOzAzOjE4OjI1IFBNOzQ7MzA2OA=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="asrama" type="String" array="True" size="4"/>
+            <declare name="i" type="Integer" array="False" size=""/>
+            <assign variable="i" expression="0"/>
+            <declare name="j" type="Integer" array="False" size=""/>
+            <assign variable="j" expression="0"/>
+            <while expression="j&lt;4">
+                <assign variable="asrama[i]" expression="proses2()"/>
+                <if expression="asrama[i]==&quot;---&quot;">
+                    <then>
+                        <assign variable="j" expression="5"/>
+                    </then>
+                    <else>
+                        <assign variable="i" expression="i+1"/>
+                        <assign variable="j" expression="j+1"/>
+                    </else>
+                </if>
+            </while>
+            <call expression="proses(asrama,i)"/>
+        </body>
+    </function>
+    <function name="proses" type="None" variable="">
+        <parameters>
+            <parameter name="asrama" type="String" array="True"/>
+            <parameter name="i" type="Integer" array="False"/>
+        </parameters>
+        <body>
+            <declare name="k" type="Integer" array="False" size=""/>
+            <for variable="k" start="0" end="i-1" direction="inc" step="1">
+                <output expression="asrama[k]" newline="True"/>
+            </for>
+        </body>
+    </function>
+    <function name="proses2" type="String" variable="asrama">
+        <parameters/>
+        <body>
+            <declare name="asrama" type="String" array="False" size=""/>
+            <input variable="asrama"/>
+        </body>
+    </function>
+</flowgorithm>
